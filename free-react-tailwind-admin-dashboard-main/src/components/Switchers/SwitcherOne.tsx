@@ -1,8 +1,6 @@
 import { useState } from 'react';
 
-const SwitcherOne = () => {
-  const [enabled, setEnabled] = useState<boolean>(false);
-
+const SwitcherOne = ({ enabled, setEnabled }) => {
   return (
     <div>
       <label
@@ -18,10 +16,10 @@ const SwitcherOne = () => {
               setEnabled(!enabled);
             }}
           />
-          <div className="block h-8 w-14 rounded-full bg-meta-9 dark:bg-[#5A616B]"></div>
+          <div className="block h-7 w-12 rounded-full !bg-primary dark:bg-[#5A616B]"></div>
           <div
-            className={`absolute left-1 top-1 h-6 w-6 rounded-full bg-white transition ${
-              enabled && '!right-1 !translate-x-full !bg-primary dark:!bg-white'
+            className={`absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition ${
+              enabled && '!right-1 !translate-x-full  dark:!bg-white'
             }`}
           ></div>
         </div>

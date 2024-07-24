@@ -62,7 +62,9 @@ export default function AddProduct() {
             />
           </div>
           <div className="flex justify-end mt-10">
-            <Button buttonName="Add Product" />
+            <div className="w-1/4">
+              <Button buttonName="Add Product" />
+            </div>
           </div>
         </form>
         <div className="w-2/5 flex flex-col gap-2 h-[70vh] overflow-auto ">
@@ -85,7 +87,7 @@ export default function AddProduct() {
             return (
               <div className="bg-white rounded-md py-4 px-6">
                 <div className="flex justify-between">
-                  <p className="text-lg text-black font-medium line-clamp-2">
+                  <p className=" text-black font-medium line-clamp-2">
                     {index + 1} . {item?.name}
                   </p>
                   <IoClose size={24} className="text-red-500 cursor-pointer" />
@@ -93,7 +95,7 @@ export default function AddProduct() {
                 <div className="flex gap-4 items-center">
                   {statusList?.map((status) => {
                     return (
-                      <div className="flex items-center gap-2 text-base font-medium">
+                      <div className="flex items-center gap-2 text-xs font-medium">
                         <p>{status?.title} : </p>
                         <p>{status?.value}</p>
                       </div>

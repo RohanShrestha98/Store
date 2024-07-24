@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { axiosPrivate } from "../utils/axios";
-import { useAuthStore } from "../store/useAuthStore";
-import useVerify from "./useVerify";
+import { useEffect } from 'react';
+import { axiosPrivate } from '../utils/axios';
+import { useAuthStore } from '../store/useAuthStore';
+import useVerify from './useVerify';
 
 export default function useAxiosPrivate() {
   const { user } = useAuthStore();
@@ -10,12 +10,12 @@ export default function useAxiosPrivate() {
   useEffect(() => {
     const requestIntercept = axiosPrivate.interceptors.request.use(
       (config) => {
-        if (!config.headers["Authorization"] && user?.access) {
-          config.headers["Authorization"] = `Bearer ${user?.access}`;
+        if (!config.headers['Authorization'] && user?.access) {
+          config.headers['Authorization'] = `Bearer ${user?.access}`;
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     const responseIntercept = axiosPrivate.interceptors.response.use(
@@ -29,7 +29,7 @@ export default function useAxiosPrivate() {
           return axiosPrivate(prevRequest);
         }
         return Promise.reject(error);
-      }
+      },
     );
 
     return () => {

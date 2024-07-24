@@ -213,3 +213,11 @@ span.flatpickr-weekday,
 [x-cloak] {
   display: none !important;
 }
+
+.ql-toolbar.ql-snow{
+  background: rgb(219, 219, 219) !important;
+}
+
+.ql-container.ql-snow{
+  border: 1px solid #E2E8F0 !important;
+}

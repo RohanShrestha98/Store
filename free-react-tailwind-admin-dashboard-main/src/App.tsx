@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
@@ -16,7 +15,11 @@ import Tables from './pages/Tables';
 import Alerts from './pages/UiElements/Alerts';
 import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
-import AddProduct from './pages/AddProduct/AddProduct';
+import AddProduct from './pages/Product/AddProduct';
+import { Toaster } from 'react-hot-toast';
+import Product from './pages/Product/Product';
+import Category from './pages/category/Category';
+import AddCategory from './pages/category/AddCategory';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -34,6 +37,8 @@ function App() {
     <Loader />
   ) : (
     <>
+      <Toaster />
+
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route
@@ -51,6 +56,33 @@ function App() {
               <>
                 <PageTitle title="Add Product page" />
                 <AddProduct />
+              </>
+            }
+          />
+          <Route
+            path="/product"
+            element={
+              <>
+                <PageTitle title="Product page" />
+                <Product />
+              </>
+            }
+          />
+          <Route
+            path="/category"
+            element={
+              <>
+                <PageTitle title="Category page" />
+                <Category />
+              </>
+            }
+          />
+          <Route
+            path="/add-category"
+            element={
+              <>
+                <PageTitle title="Add Category page" />
+                <AddCategory />
               </>
             }
           />
