@@ -20,10 +20,10 @@ export default function ChooseImage({
     }
   };
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col ">
       <h1 className="text-[#344054] font-medium text-sm">Image</h1>
-      <div className="flex items-center rounded-[4px]">
-        <div className="w-full border-l justify-between border-t border-b border-stroke  h-10 rounded-l-[6px] flex items-center   px-4 text-sm text-gray-500 bg-white">
+      <div className="flex items-center rounded-[4px] ">
+        <div className="w-[70%]  border-l justify-between border-t border-b border-stroke  h-10 rounded-l-[6px] flex items-center   px-4 text-sm text-gray-500 bg-white">
           {defaultUrl ?? selectedImage?.url ?? 'Select a image'}{' '}
           {(selectedImage?.url || defaultUrl) && (
             <RxCross2
@@ -40,7 +40,7 @@ export default function ChooseImage({
         />
         <label
           htmlFor="chooseImg"
-          className="whitespace-nowrap cursor-pointer text-sm text-white bg-blue-500 border-stroke border rounded-r-[6px]  h-10 flex items-center px-3 "
+          className="whitespace-nowrap cursor-pointer w-[30%] text-sm text-white bg-blue-500 border-stroke border rounded-r-[6px]  h-10 flex items-center text-center px-2 "
         >
           Browse File
         </label>

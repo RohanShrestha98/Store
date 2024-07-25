@@ -59,7 +59,7 @@ export default function Category() {
         id: 'duration',
         cell: (info) => {
           return (
-            <p className="flex items-center gap-1">
+            <p className="flex items-center gap-1 min-w-[260px]">
               {ConvertHtmlToPlainText(
                 info?.row?.original?.description?.slice(0, 50),
               )}
@@ -70,7 +70,7 @@ export default function Category() {
         footer: (props) => props.column.id,
       },
       {
-        accessorFn: (row) => row?.description,
+        accessorFn: (row) => row?.tags,
         id: 'noOfFields',
         cell: (info) => {
           return (
@@ -83,13 +83,26 @@ export default function Category() {
         footer: (props) => props.column.id,
       },
       {
+        accessorFn: (row) => row?.brands,
+        id: 'noOfFields',
+        cell: (info) => {
+          return (
+            <p className="flex items-center gap-1">
+              {info?.row?.original?.brands?.length}
+            </p>
+          );
+        },
+        header: () => <span>No of brands</span>,
+        footer: (props) => props.column.id,
+      },
+      {
         accessorFn: (row) => row,
         id: 'action',
         cell: (info) => {
           return (
             <div className="flex gap-2 text-base justify-center">
               <FiEdit2
-                className="text-[#1b1b1b] cursor-pointer"
+                className="text-blue-600 cursor-pointer"
                 onClick={() =>
                   navigate('/add-category', { state: info?.row?.original })
                 }
@@ -115,7 +128,6 @@ export default function Category() {
   return (
     <div>
       <Breadcrumb pageName="Category" />
-
       <Table
         data={data?.data ?? []}
         columns={columns}

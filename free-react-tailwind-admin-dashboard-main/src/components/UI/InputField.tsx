@@ -33,13 +33,13 @@ export default function InputField({
   return (
     <div className="w-full">
       {type !== 'password' && label && (
-        <label className="mb-2 block text-sm text-black font-medium dark:text-white">
+        <label className=" block text-sm text-black font-medium dark:text-white">
           {label} {required && <span className="text-red-500">*</span>}
         </label>
       )}
       {type === 'password' && label && (
         <div className="flex items-center justify-between">
-          <label className="mb-2 block text-sm text-black font-medium dark:text-white">
+          <label className="block text-sm text-black font-medium dark:text-white">
             {label} {required && <span className="text-red-500">*</span>}
           </label>
           <div
@@ -64,7 +64,7 @@ export default function InputField({
         disabled={disabled}
         defaultValue={defaultValue}
         placeholder={placeholder}
-        className={`${classname} w-full disabled:cursor-not-allowed rounded border-[1.5px] text-sm border-stroke bg-transparent py-3 px-4 text-black outline-none h-10 transition focus:border-primary active:border-primary  disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary`}
+        className={`${classname} w-full disabled:cursor-not-allowed rounded border text-sm border-stroke bg-transparent py-3 px-4 text-gray-500 outline-none h-10 transition focus:border-primary active:border-primary  disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary`}
       />
       {error && <p className="text-red-500">{error}</p>}
     </div>

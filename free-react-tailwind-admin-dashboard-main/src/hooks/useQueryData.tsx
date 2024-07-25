@@ -23,3 +23,8 @@ export const useSubjectDetails = (subjectID) =>
   useQueryData(['subject-details', subjectID], `subject/details/${subjectID}/`);
 export const useCategoryData = () =>
   useQueryData(['category'], `api/category/list/`);
+
+export const useProductData = () =>
+  useQueryData(['product'], `api/product/list/`);
+export const useProductDataByBarCode = (id) =>
+  useQueryData(['product', id], `api/product/list/barcode/${id}`, '', !!id);

@@ -120,11 +120,11 @@ export default function Table<T extends { idx: string }>({
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className={`group text-[14px] text-black py-2 px-4 text-start font-semibold last:pr-4 ${
+                    className={`group text-[14px] w-10 text-black py-2 px-4 text-start font-semibold last:pr-4 ${
                       header.column.getCanSort()
                         ? 'cursor-pointer select-none'
                         : ''
-                    } ${containsActions ? 'last:w-1' : ''}`}
+                    } ${containsActions ? 'last:w-1 ' : ''}`}
                     onClick={header.column.getToggleSortingHandler()}
                     style={{
                       width: header.getSize(),

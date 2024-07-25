@@ -16,7 +16,9 @@ const Breadcrumb = ({ pageName }: BreadcrumbProps) => {
               Dashboard /
             </Link>
           </li>
-          <li className="font-medium text-primary">{pageName}</li>
+          <li className="font-medium text-primary">
+            {pageName?.split('||')?.[0]}
+          </li>
         </ol>
       </nav>
     </div>

@@ -26,6 +26,7 @@ export default function AddCategory() {
   const [selectedImage, setSelectedImage] = useState();
   const [value, setValue] = useState(edit ? editData?.description : '');
   const [tags, setTags] = useState(edit ? editData?.tags : []);
+  const [brands, setBrands] = useState(edit ? editData?.brands : []);
 
   const fieldSchema = Yup.object().shape({
     title: Yup.string()
@@ -56,6 +57,7 @@ export default function AddCategory() {
       description: value,
       thumbnail: selectedImage && selectedImage,
       tags: tags,
+      brands: brands,
     };
     try {
       await categoryMutation.mutateAsync([
@@ -87,22 +89,24 @@ export default function AddCategory() {
           onSubmit={handleSubmit(onSubmitHandler)}
         >
           <div className="flex flex-col gap-4">
-            <ChooseImage
-              setSelectedImage={setSelectedImage}
-              selectedImage={selectedImage}
-              defaultUrl={editData?.thumbnail?.url}
-            />
+            <div className="grid grid-cols-2 gap-2">
+              <InputField
+                register={register}
+                name="title"
+                placeholder="Enter Category Name"
+                className="w-full text-sm text-gray-500"
+                defaultValue=""
+                required
+                error={errors?.title?.message}
+                label="Category Name"
+              />
+              <ChooseImage
+                setSelectedImage={setSelectedImage}
+                selectedImage={selectedImage}
+                defaultUrl={editData?.thumbnail?.url}
+              />
+            </div>
 
-            <InputField
-              register={register}
-              name="title"
-              placeholder="Enter Category Name"
-              className="w-full text-sm text-gray-500"
-              defaultValue=""
-              required
-              error={errors?.title?.message}
-              label="Category Name"
-            />
             <div>
               <p className="text-[#344054] font-medium text-sm mb-1">
                 Description{' '}
@@ -121,6 +125,12 @@ export default function AddCategory() {
               id="catagory_inputfield "
               tags={tags}
               setTags={setTags}
+            />
+            <KeywordSelect
+              title={'Enter the brand under this category'}
+              id="brands "
+              tags={brands}
+              setTags={setBrands}
             />
           </div>
           <div className="flex items-center justify-end">
@@ -154,16 +164,18 @@ export default function AddCategory() {
               {ConvertHtmlToPlainText(value)}
             </p>
           </div>
-          <div className="gap-3 w-full grid grid-cols-2 mt-2">
+          <div className="gap-2 w-full grid grid-cols-2 mt-2">
             {tags?.map((item) => {
               return (
-                <div key={item}>
-                  <InputField
-                    register={register}
-                    name={item}
-                    placeholder={`Enter ${smallFirstLetter(item)}`}
+                <div className="w-full">
+                  <label className=" block text-sm text-black font-medium dark:text-white">
+                    {capitalizeFirstLetter(item)}
+                  </label>
+                  <input
+                    id={item}
                     disabled
-                    label={capitalizeFirstLetter(item)}
+                    placeholder={`Enter ${smallFirstLetter(item)}`}
+                    className={` w-full disabled:cursor-not-allowed rounded border-[1.5px] text-xs border-stroke bg-transparent py-3 px-2 text-black outline-none h-8 transition focus:border-primary active:border-primary  disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary`}
                   />
                 </div>
               );

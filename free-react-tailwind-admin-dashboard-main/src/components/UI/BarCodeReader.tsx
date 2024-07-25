@@ -1,12 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
-interface Props {
-  register: (e) => {};
-  name?: string;
-}
 
-export default function BarCodeReader({ register, name }: Props) {
-  const [barCodeDisplay, setBarCodeDisplay] = useState('');
+export default function BarCodeReader({ setBarCodeDisplay, barCodeDisplay }) {
   const [barCodeScan, setBarCodeScan] = useState('');
 
   useEffect(() => {
@@ -27,20 +22,19 @@ export default function BarCodeReader({ register, name }: Props) {
   }, [barCodeScan]);
 
   const handleScan = (barCodeString: string) => {
-    console.log('barCodeString', barCodeString);
     setBarCodeDisplay(barCodeString);
   };
 
   return (
     <div className="w-full">
-      <label className="mb-2 block text-sm font-medium text-black dark:text-white">
+      <label className="mb-1 block text-sm font-medium text-black dark:text-white">
         Barcode Number
       </label>
       <input
-        {...register(name)}
         type="text"
+        placeholder="Scan your barcode"
         value={barCodeDisplay}
-        className={` w-full rounded border-[1.5px] border-stroke bg-transparent py-3 h-10 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary`}
+        className={` w-full rounded border-[1.5px] border-stroke bg-transparent py-3 h-10 px-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary`}
       />
     </div>
   );

@@ -22,7 +22,6 @@ export const useMutate = (
       };
 
       const response = await axiosPrivate(requestData);
-      console.log('response', response);
       return response?.data;
     },
     onSuccess: () => {
@@ -48,3 +47,5 @@ export const useFileMutation = () =>
 
 export const useCategoryMutation = () =>
   useMutate(['category'], 'api/category/');
+
+export const useProductMutation = () => useMutate(['product'], 'api/product/');

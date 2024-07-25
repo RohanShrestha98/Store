@@ -33,7 +33,7 @@ const MapOne = () => {
       labels: {
         regions: {
           render(code: string) {
-            return code.split('-')[1];
+            return code?.split('-')[1];
           },
         },
       },

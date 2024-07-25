@@ -10,8 +10,8 @@ export default function useAxiosPrivate() {
   useEffect(() => {
     const requestIntercept = axiosPrivate.interceptors.request.use(
       (config) => {
-        if (!config.headers['Authorization'] && user?.access) {
-          config.headers['Authorization'] = `Bearer ${user?.access}`;
+        if (!config.headers['Authorization'] && user?.accessToken) {
+          config.headers['Authorization'] = `Bearer ${user?.accessToken}`;
         }
         return config;
       },
@@ -36,7 +36,7 @@ export default function useAxiosPrivate() {
       axiosPrivate.interceptors.request.eject(requestIntercept);
       axiosPrivate.interceptors.response.eject(responseIntercept);
     };
-  }, [user?.access, verify]);
+  }, [user?.accessToken, verify]);
 
   return axiosPrivate;
 }
